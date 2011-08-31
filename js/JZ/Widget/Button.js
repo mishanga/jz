@@ -1,30 +1,30 @@
 JZ.Widget.Button = $.inherit(JZ.Widget, {
 
-	_bindEvents : function() {
+    _bindEvents : function() {
 
-		return this
-			.__base()
-			._bindToElem('click', this._onClick);
+        return this
+            .__base()
+            ._bindToElem('click', this._onClick);
 
 
-	},
+    },
 
-	_onClick : function(e) {
+    _onClick : function(e) {
 
-		this.trigger('click', { originalEvent : e });
+        this.trigger('click', { originalEvent : e });
 
-	},
+    },
 
-	_enableElems : function() {
+    _enableElems : function() {
 
-		this._elem.attr('disabled', false);
+        this._elem.attr('disabled', false);
 
-	},
+    },
 
-	_disableElems : function() {
+    _disableElems : function() {
 
-		this._elem.attr('disabled', true);
+        this._elem.attr('disabled', true);
 
-	}
+    }
 
 });

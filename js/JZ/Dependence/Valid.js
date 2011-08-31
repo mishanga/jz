@@ -1,51 +1,51 @@
 JZ.Dependence.Valid = $.inherit(JZ.Dependence, {
 
-	_preprocessParams : function(params) {
+    _preprocessParams : function(params) {
 
-		this.__base(params);
+        this.__base(params);
 
-		params.type == 'email' && (params.pattern = /^[a-zA-Z0-9][a-zA-Z0-9\.\-\_\~]*\@[a-zA-Z0-9\.\-\_]+\.[a-zA-Z]{2,4}$/);
-		return params;
+        params.type == 'email' && (params.pattern = /^[a-zA-Z0-9][a-zA-Z0-9\.\-\_\~]*\@[a-zA-Z0-9\.\-\_]+\.[a-zA-Z]{2,4}$/);
+        return params;
 
-	},
+    },
 
-	_processResult : function() {
+    _processResult : function() {
 
-		return this._params.checkEmpty? this.__base() : (this._params.widget._getVal().isEmpty() || this.__base());				
+        return this._params.checkEmpty? this.__base() : (this._params.widget._getVal().isEmpty() || this.__base());
 
-	},
+    },
 
-	_processParams : function(result) {
+    _processParams : function(result) {
 
-		var invalidCSSClass = this._params.invalidCSSClass;
-		return {
-			invalidCSSClasses : invalidCSSClass? [{ name : invalidCSSClass, add : !result }] : []
-		};
+        var invalidCSSClass = this._params.invalidCSSClass;
+        return {
+            invalidCSSClasses : invalidCSSClass? [{ name : invalidCSSClass, add : !result }] : []
+        };
 
-	},
+    },
 
-	_getDefaultParams : function() {
+    _getDefaultParams : function() {
 
-		return $.extend(this.__base(), {
-			checkEmpty : false
-		});
+        return $.extend(this.__base(), {
+            checkEmpty : false
+        });
 
-	}
+    }
 
 }, {
 
-	_onOR : function(checkLeft, checkRight) {
+    _onOR : function(checkLeft, checkRight) {
 
-		return {
-			invalidCSSClasses : checkLeft.params.invalidCSSClasses.concat(checkRight.params.invalidCSSClasses)
-		};
+        return {
+            invalidCSSClasses : checkLeft.params.invalidCSSClasses.concat(checkRight.params.invalidCSSClasses)
+        };
 
-	},
+    },
 
-	_onAND : function(checkLeft, checkRight) {
+    _onAND : function(checkLeft, checkRight) {
 
-		return this._onOR(checkLeft, checkRight);
+        return this._onOR(checkLeft, checkRight);
 
-	}
+    }
 
 });

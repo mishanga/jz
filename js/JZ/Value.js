@@ -1,92 +1,92 @@
 JZ.Value = $.inherit({
 
-	__constructor : function(val) {
+    __constructor : function(val) {
 
-		this._val = null;
-		this.reset();
+        this._val = null;
+        this.reset();
 
-		typeof val != 'undefined' && this.set(val);
+        typeof val != 'undefined' && this.set(val);
 
-	},
+    },
 
-	reset : function() {
+    reset : function() {
 
-		this.set('');
+        this.set('');
 
-	},
+    },
 
-	get : function() {
+    get : function() {
 
-		return this._val;
+        return this._val;
 
-	},
+    },
 
-	set : function(val) {
+    set : function(val) {
 
-		this._val = val.toString();
+        this._val = val.toString();
 
-	},
+    },
 
-	match : function(pattern) {
+    match : function(pattern) {
 
-		return pattern.test(this.get());
+        return pattern.test(this.get());
 
-	},
+    },
 
-	clone : function() {
+    clone : function() {
 
-		return new this.__self(this.get());
+        return new this.__self(this.get());
 
-	},
+    },
 
-	isEqual : function(val) {
+    isEqual : function(val) {
 
-		return this._checkForCompareTypes(val) &&
-			   this.toString() === new this.__self((val instanceof JZ.Value)? val.get() : val).toString();
+        return this._checkForCompareTypes(val) &&
+               this.toString() === new this.__self((val instanceof JZ.Value)? val.get() : val).toString();
 
-	},
+    },
 
-	isGreater : function(val) {
+    isGreater : function(val) {
 
-		return this._checkForCompareTypes(val) &&
-			   this.get().length > new this.__self((val instanceof JZ.Value)? val.get() : val).get().length;
+        return this._checkForCompareTypes(val) &&
+               this.get().length > new this.__self((val instanceof JZ.Value)? val.get() : val).get().length;
 
-	},
+    },
 
-	isGreaterOrEqual : function(val) {
+    isGreaterOrEqual : function(val) {
 
-		return this.isGreater(val) || this.isEqual(val);
+        return this.isGreater(val) || this.isEqual(val);
 
-	},
+    },
 
-	isLess : function(val) {
+    isLess : function(val) {
 
-		return this._checkForCompareTypes(val) && !this.isGreaterOrEqual(val);
+        return this._checkForCompareTypes(val) && !this.isGreaterOrEqual(val);
 
-	},
+    },
 
-	isLessOrEqual : function(val) {
+    isLessOrEqual : function(val) {
 
-		return this._checkForCompareTypes(val) && !this.isGreater(val);
+        return this._checkForCompareTypes(val) && !this.isGreater(val);
 
-	},
+    },
 
-	isEmpty : function() {
+    isEmpty : function() {
 
-		return this.get() === '';
+        return this.get() === '';
 
-	},
+    },
 
-	toString : function() {
+    toString : function() {
 
-		return this.get().toString();
+        return this.get().toString();
 
-	},
+    },
 
-	_checkForCompareTypes : function(val) {
+    _checkForCompareTypes : function(val) {
 
-		return val instanceof this.__self || typeof val == 'string';
+        return val instanceof this.__self || typeof val == 'string';
 
-	}
+    }
 
 });

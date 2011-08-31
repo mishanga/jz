@@ -1,3 +1,3 @@
 $(function() {
-	$('form.' + JZ.CSS_CLASS_WIDGET).jz();
+    $('form.' + JZ.CSS_CLASS_WIDGET).jz();
 });

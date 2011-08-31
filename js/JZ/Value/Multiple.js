@@ -1,94 +1,94 @@
 JZ.Value.Multiple = $.inherit(JZ.Value, {
 
-	reset : function() {
+    reset : function() {
 
-		this.set([]);
+        this.set([]);
 
-	},
+    },
 
-	set : function(val) {
+    set : function(val) {
 
-		this._val = $.makeArray(val);
+        this._val = $.makeArray(val);
 
-	},
+    },
 
-	match : function(pattern) {
+    match : function(pattern) {
 
-		if(this.isEmpty()) {
-			return pattern.test('');
-		}
+        if(this.isEmpty()) {
+            return pattern.test('');
+        }
 
-		var i = 0, length = this._val.length;
-		while(i < length) {
-			if(pattern.test(this._val[i++])) {
-				return true;
-			}
-		}
+        var i = 0, length = this._val.length;
+        while(i < length) {
+            if(pattern.test(this._val[i++])) {
+                return true;
+            }
+        }
 
-		return false;
+        return false;
 
-	},
+    },
 
-	clone : function() {
+    clone : function() {
 
-		return new this.__self(this.get().slice(0));
+        return new this.__self(this.get().slice(0));
 
-	},
+    },
 
-	isEmpty : function() {
+    isEmpty : function() {
 
-		return this._val.length == 0;
+        return this._val.length == 0;
 
-	},
+    },
 
-	isContain : function(val) {
+    isContain : function(val) {
 
-		var i = 0, thisVal = this._val, length = thisVal.length;
-		while(i < length) {
-			if(thisVal[i++] == val) {
-				return true;
-			}
-		}
-		return false;
+        var i = 0, thisVal = this._val, length = thisVal.length;
+        while(i < length) {
+            if(thisVal[i++] == val) {
+                return true;
+            }
+        }
+        return false;
 
-	},
+    },
 
-	isEqual : function(val) {
+    isEqual : function(val) {
 
-		if(!this._checkForCompareTypes(val)) {
-			return false;
-		}
+        if(!this._checkForCompareTypes(val)) {
+            return false;
+        }
 
-		var compareVal = val instanceof this.__self? val.get() : val,
-			thisVal = this._val,
-			thisValLength = thisVal.length;
+        var compareVal = val instanceof this.__self? val.get() : val,
+            thisVal = this._val,
+            thisValLength = thisVal.length;
 
-		if(thisValLength != compareVal.length) {
-			return false;
-		}
+        if(thisValLength != compareVal.length) {
+            return false;
+        }
 
-		var i = 0;
-		while(i < thisValLength) {
-			if(thisVal[i] != compareVal[i++]) {
-				return false;
-			}
-		}
+        var i = 0;
+        while(i < thisValLength) {
+            if(thisVal[i] != compareVal[i++]) {
+                return false;
+            }
+        }
 
-		return true;
+        return true;
 
-	},
+    },
 
-	isGreater : function(val) {
+    isGreater : function(val) {
 
-		return this._checkForCompareTypes(val) &&
-			   this._val.length > (val instanceof this.__self? val.get() : val).length;
+        return this._checkForCompareTypes(val) &&
+               this._val.length > (val instanceof this.__self? val.get() : val).length;
 
-	},
+    },
 
-	_checkForCompareTypes : function(val) {
+    _checkForCompareTypes : function(val) {
 
-		return val instanceof this.__self || $.isArray(val);
+        return val instanceof this.__self || $.isArray(val);
 
-	}
+    }
 
 });

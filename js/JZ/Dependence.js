@@ -1,69 +1,69 @@
 JZ.Dependence = $.inherit({
 
-	__constructor : function(params) {
+    __constructor : function(params) {
 
-		this._params = $.extend(this._getDefaultParams(), this._preprocessParams(params));
+        this._params = $.extend(this._getDefaultParams(), this._preprocessParams(params));
 
-	},
+    },
 
-	getFrom : function() {
+    getFrom : function() {
 
-		return [this._params.widget];
+        return [this._params.widget];
 
-	},
+    },
 
-	removeFrom : function(widget) {
+    removeFrom : function(widget) {
 
-		return this._params.widget === widget? null : this;
+        return this._params.widget === widget? null : this;
 
-	},
+    },
 
-	check : function() {
+    check : function() {
 
-		var result = this._precheck() && this._processResult();
-		return {
-			result : result,
-			params : this._processParams(result)
-		};
+        var result = this._precheck() && this._processResult();
+        return {
+            result : result,
+            params : this._processParams(result)
+        };
 
-	},
+    },
 
-	_preprocessParams : function(params) {
+    _preprocessParams : function(params) {
 
-		typeof params.pattern == 'string' && (params.pattern = new RegExp(params.pattern));
+        typeof params.pattern == 'string' && (params.pattern = new RegExp(params.pattern));
 
-		return params;
+        return params;
 
-	},
+    },
 
-	_precheck : function() {
+    _precheck : function() {
 
-		return this._params.widget.isEnabled();
+        return this._params.widget.isEnabled();
 
-	},
+    },
 
-	_processResult : function() {
+    _processResult : function() {
 
-		var params = this._params;
-		return params.fn?
-			params.fn(params.widget) :
-			params.widget._getVal().match(params.pattern);
+        var params = this._params;
+        return params.fn?
+            params.fn(params.widget) :
+            params.widget._getVal().match(params.pattern);
 
-	},
+    },
 
-	_processParams : function(result) {},
+    _processParams : function(result) {},
 
-	_getDefaultParams : function() {
+    _getDefaultParams : function() {
 
-		return {
-			pattern : /.+/
-		};
+        return {
+            pattern : /.+/
+        };
 
-	}
+    }
 
 }, {
 
-	_onOR  : function() {},
-	_onAND : function() {}
+    _onOR  : function() {},
+    _onAND : function() {}
 
 });

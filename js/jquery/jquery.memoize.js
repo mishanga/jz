@@ -13,19 +13,19 @@
 (function($) {
 
 var getFnHash = function(fn, ctx, args) {
-		var result = [$.identify(fn), $.identify(ctx)];
-		$.each(args, function() {
-			result.push(typeof this, this);
-		});
-		return result.join('\x0B');
-	};
+        var result = [$.identify(fn), $.identify(ctx)];
+        $.each(args, function() {
+            result.push(typeof this, this);
+        });
+        return result.join('\x0B');
+    };
 
 $.memoize = function(fn) {
-	return function() {
-		!fn['__memoize'] && (fn['__memoize'] = {});
-		var hash = getFnHash(fn, this, arguments);
-		return fn['__memoize'][hash] || (fn['__memoize'][hash] = fn.apply(this, arguments));
-	};
+    return function() {
+        !fn['__memoize'] && (fn['__memoize'] = {});
+        var hash = getFnHash(fn, this, arguments);
+        return fn['__memoize'][hash] || (fn['__memoize'][hash] = fn.apply(this, arguments));
+    };
 };
 
 })(jQuery);

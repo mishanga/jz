@@ -1,21 +1,21 @@
 JZ.Dependence.Composition.NOT = $.inherit(JZ.Dependence.Composition, {
 
-	_precheck : function() {
+    _precheck : function() {
 
-		return this._params.dependencies[0]._precheck();
+        return this._params.dependencies[0]._precheck();
 
-	},
+    },
 
-	_processResult : function() {
+    _processResult : function() {
 
-		return !this._params.dependencies[0]._processResult();
+        return !this._params.dependencies[0]._processResult();
 
-	},
+    },
 
-	_processParams : function(result) {
+    _processParams : function(result) {
 
-		return this._params.dependencies[0]._processParams(result);
+        return this._params.dependencies[0]._processParams(result);
 
-	}
+    }
 
 });

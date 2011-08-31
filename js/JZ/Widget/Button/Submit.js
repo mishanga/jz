@@ -1,54 +1,54 @@
 JZ.Widget.Button.Submit = $.inherit(JZ.Widget.Button, {
 
-	reset : function() {
+    reset : function() {
 
-		return this
-			.__base()
-			._updateState();
+        return this
+            .__base()
+            ._updateState();
 
-	},
+    },
 
-	_setForm : function(form) {
+    _setForm : function(form) {
 
-		return this.__base(form)._params.disableOnNoReady?
-			this._bindTo(form, 'ready-change', this._updateState) :
-			this.enable();
+        return this.__base(form)._params.disableOnNoReady?
+            this._bindTo(form, 'ready-change', this._updateState) :
+            this.enable();
 
-	},
+    },
 
-	_reinit : function() {
+    _reinit : function() {
 
-		return this
-			.__base()
-			._updateState();
+        return this
+            .__base()
+            ._updateState();
 
-	},
+    },
 
-	_updateState : function() {
+    _updateState : function() {
 
-		return this[this._form.isReady() || !this._params.disableOnNoReady? 'enable' : 'disable']();
+        return this[this._form.isReady() || !this._params.disableOnNoReady? 'enable' : 'disable']();
 
-	},
+    },
 
-	_getDefaultParams : function() {
+    _getDefaultParams : function() {
 
-		return {
-			disableOnNoReady : true,
-			disableOnSubmit  : true
-		};
+        return {
+            disableOnNoReady : true,
+            disableOnSubmit  : true
+        };
 
-	},
+    },
 
-	_beforeSubmit : function() {
+    _beforeSubmit : function() {
 
-		this._params.disableOnSubmit && this.disable();
+        this._params.disableOnSubmit && this.disable();
 
-	},
+    },
 
-	_checkDependencies : function() {
+    _checkDependencies : function() {
 
-		return this;
+        return this;
 
-	}
+    }
 
 });

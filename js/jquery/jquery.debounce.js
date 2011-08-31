@@ -12,62 +12,62 @@
 
 $.extend({
 
-	debounce : function(fn, timeout, invokeAsap, context) {
+    debounce : function(fn, timeout, invokeAsap, context) {
 
-		if(arguments.length == 3 && typeof invokeAsap != 'boolean') {
-			context = invokeAsap;
-			invokeAsap = false;
-		}
+        if(arguments.length == 3 && typeof invokeAsap != 'boolean') {
+            context = invokeAsap;
+            invokeAsap = false;
+        }
 
-		var timer;
+        var timer;
 
-		return function() {
+        return function() {
 
-			var args = arguments;
-			context = context || this;
+            var args = arguments;
+            context = context || this;
 
-			if(invokeAsap && !timer) {
-				fn.apply(context, args);
-			}
+            if(invokeAsap && !timer) {
+                fn.apply(context, args);
+            }
 
-			clearTimeout(timer);
+            clearTimeout(timer);
 
-			timer = setTimeout(function() {
-				if(!invokeAsap) {
-					fn.apply(context, args);
-				}
-				timer = null;
-			}, timeout);
+            timer = setTimeout(function() {
+                if(!invokeAsap) {
+                    fn.apply(context, args);
+                }
+                timer = null;
+            }, timeout);
 
-		};
+        };
 
-	},
+    },
 
-	throttle : function(fn, timeout, context) {
+    throttle : function(fn, timeout, context) {
 
-		var timer, args, needInvoke;
+        var timer, args, needInvoke;
 
-		return function() {
+        return function() {
 
-			args = arguments;
-			needInvoke = true;
+            args = arguments;
+            needInvoke = true;
 
-			if(!timer) {
-				(function() {
-					if(needInvoke) {
-						fn.apply(context, args);
-						needInvoke = false;
-						timer = setTimeout(arguments.callee, timeout);
-					}
-					else {
-						timer = null;
-					}
-				})();
-			}
+            if(!timer) {
+                (function() {
+                    if(needInvoke) {
+                        fn.apply(context, args);
+                        needInvoke = false;
+                        timer = setTimeout(arguments.callee, timeout);
+                    }
+                    else {
+                        timer = null;
+                    }
+                })();
+            }
 
-		};
+        };
 
-	}
+    }
 
 });
 

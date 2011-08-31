@@ -1,17 +1,17 @@
 JZ.Storage = $.inherit({
 
-	__constructor : function(params) {
+    __constructor : function(params) {
 
-		this._params = params;
+        this._params = params;
 
-	},
+    },
 
-	isEmpty : function() {
+    isEmpty : function() {
 
-		return false;
+        return false;
 
-	},
+    },
 
-	filter : function(value, callback) {}
+    filter : function(value, callback) {}
 
 });

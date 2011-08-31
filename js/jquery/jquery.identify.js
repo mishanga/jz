@@ -14,7 +14,7 @@
 var idCounter = 1;
 
 $.identify = function(obj) {
-	return obj.__id || (obj.__id = idCounter++);
+    return obj.__id || (obj.__id = idCounter++);
 };
 
 })(jQuery);
